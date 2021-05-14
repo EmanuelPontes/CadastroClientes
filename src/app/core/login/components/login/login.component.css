@@ -1,0 +1,75 @@
+body {
+    -webkit-box-sizing: border-box!important;
+    -moz-box-sizing: border-box!important;
+    box-sizing: border-box!important;
+    background-color: #296049!important;
+    min-height: 100vh;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    padding: 6vmin!important;
+    font-size: 4vmin; 
+    border-radius: 15%!important;
+    width: 100%;
+ }
+ 
+ :-moz-placeholder { /* Firefox 18- */
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    padding: 6vmin!important;
+    font-size: 4vmin; 
+    border-radius: 15%!important;
+    width: 100%;
+ }
+ 
+ ::-moz-placeholder {  /* Firefox 19+ */
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    padding: 6vmin!important;
+    font-size: 4vmin;  
+    border-radius: 15%!important;
+    width: 100%;
+ }
+ 
+ :-ms-input-placeholder {  
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    padding: 6vmin!important;
+    font-size: 4vmin; 
+    border-radius: 15%!important;
+    width: 100%;
+ }
+
+a {
+    outline: none!important; 
+    text-decoration:none!important;
+    color:white!important;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: 1fr 14fr 1fr;
+    grid-template-areas:
+    "...     ...     ..."
+    "... login-content ..."
+    "login-footer login-footer login-footer"!important;
+}
+
+login-content {
+    grid-area: login-content!important;
+    padding: 0!important;
+    width: 100%;
+}
+
+login-footer {
+    grid-area: login-footer!important;
+    padding: 0!important;
+    width: 100%;
+}

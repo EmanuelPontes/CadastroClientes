@@ -1,0 +1,15 @@
+:host {
+    width: 100%!important;
+    padding: 1rem;
+    background-color: white!important;
+}
+
+#fontStyle-1 {
+    font-family: 'handlegothic';
+    color: #d3e0ea;
+}
+
+#fontStyle-2 {
+    font-family: 'infiniteStroke';
+    color: #1687a7;
+}
