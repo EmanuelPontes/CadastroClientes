@@ -1,0 +1,29 @@
+.home-grid{
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: 1fr 14fr 1fr;
+    grid-template-areas:
+    "home-header home-header home-header"
+    "... home-content ..."
+    "home-footer home-footer home-footer"!important;
+  }
+  
+  home-header {
+    grid-area:   home-header!important;
+    padding: 0!important;
+    width: 100%;
+  }
+  
+  home-content {
+    grid-area: home-content!important;
+    padding: 0!important;
+    width: 100%;
+  }
+  
+  home-footer {
+    grid-area: home-footer!important;
+    padding: 0!important;
+    width: 100%;
+  }
+
+  

@@ -9,9 +9,14 @@ const routes: Routes = [
   },
   {
     path:'login',
-    loadChildren: './core/login/login.module#LoginModule'
+    loadChildren: () => import('./core/login/login.module').then(moduleObj => moduleObj.LoginModule)
   },
 
+  {
+    path:'home',
+    loadChildren: () => import('./core/home/home.module').then(moduleObj => moduleObj.HomeModule)
+  },
+ 
   {
     path: '**',
     redirectTo: ''

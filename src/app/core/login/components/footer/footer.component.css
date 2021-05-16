@@ -1,0 +1,12 @@
+.footer-position {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.footer-font {
+    grid-row: 1;
+    grid-column: 2/3;
+    padding: 0 95px;
+    color:  #7a7a7a;
+}

@@ -1,59 +1,19 @@
-:host {
-    width: 100%!important;
-    padding: 1rem;
-    background-color: white!important;
+
+.card {
+  margin-top: 40px;
+  border: 1px dashed #006cf0af;
+  border-radius: 5%;
 }
 
-::ng-deep ngb-pagination ul > li:not(.active) > a {
-  background-color:  #ffffff!important;
-  color: #d3e0ea!important;
-  text-decoration: none!important;
-  border-radius: 10%!important;
-  min-width: 10vmin;
-  max-width: 14vmin!important;
-  width: 100%!important;
-  text-align: center!important;
-  padding: 1vmin!important;
+.card-header {
+  background-color: #7a7a7a!important;
 }
-
-
-::ng-deep ngb-pagination ul > li.active > a {
-  background-color:  #d3e0ea!important;
-  color: #f6f5f5!important;
-  text-decoration: none!important;
-  border-radius: 10%!important;
-  min-width: 10vmin;
-  max-width: 14vmin!important;
-  width: 100%!important;
-  height: auto!important;
-  text-align: center!important;
-  padding: 1vmin!important;
-}
-
-
-
-::ng-deep ngb-pagination ul > li.active {
-
-  max-width: 16vmin!important;
-  width: 100%!important;
-  border-radius: 25%!important;
-  height: auto!important;
-  padding: 1vmin!important;
-
-}
-
-::ng-deep ngb-pagination ul > li:not(.active) {
-
-  max-width: 16vmin!important;
-  width: 100%!important;
-  height: auto!important;
-  padding: 1vmin!important;
-
-}
-
 .card .card-body {
-  min-height: 85vh;
+  min-height: 185vh;
   width: 100%!important;
   border: 0!important;
 }
+
+
+
 

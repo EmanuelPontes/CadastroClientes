@@ -1,22 +1,36 @@
 <div class="card-grid">
     <div class="card">
-        <div class="card-title mb-0 text-center">
+        <div class="card-title py-4 px-5 text-center">
             
-            <h1 class="mb-0">
-                <i class="fas fa-leaf"></i> GreenPhoto
+            <h1 class="text-secondary" style="font-size: 46px; font-family: 'Courier New', Courier, monospace;">
+                <i class="fas fa-user"></i> Login
             </h1>
             
         </div>
         <div class="card-body">
             <form id="loginForm" method="POST">
                 <div class="text-center form-group row" >
-                    <input class="border-0 rounded py-3" type="text" placeholder="Usuário" name="user" class="form-control" id="user">    
+                    <div class="input-group mb-3">
+                        <span class="input-group-text text-dark" id="addon-icon-user"> <i class="fa fa-user"></i> </span>
+                        <input type="text" class="form-control" placeholder="Usuário" name="user" aria-label="Username" aria-describedby="addon-icon-user">
+                    </div>   
                 </div>
                 <div class="text-center form-group row" >
-                    <input class="border-0 rounded py-3" type="password" placeholder="Senha" name="password" class="form-control" id="password">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text text-dark" id="addon-icon-pwd"> <i class="fa fa-lock"></i> </span>
+                        <input type="password" class="form-control" placeholder="Senha" name="user" name="password" aria-label="Username" aria-describedby="addon-icon-pwd">
+                    </div>
                 </div>
+                
                 <div class="text-center py-1">
-                    <button class="btn btn-green btn-large btn-block" type="submit">Entrar</button>
+                    <div class="d-grid gap-2 col-12 mx-auto">
+                        <button class="btn btn-outline-dark btn-block"  routerLink="/home" type="submit"> 
+                            <span style="font-size: 16px; font-family: 'Courier New', Courier, monospace;">
+                                Entrar
+                            </span>    
+                        </button>
+                    </div>
+                    
                 </div>
             </form>
             <span class="text-center text-white">

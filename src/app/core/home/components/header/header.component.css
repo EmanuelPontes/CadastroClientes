@@ -1,15 +1,12 @@
-:host {
-    width: 100%!important;
-    padding: 1rem;
-    background-color: white!important;
+
+a {
+    text-decoration: none;
+    outline: none;
+    color: #fff;
 }
 
-#fontStyle-1 {
-    font-family: 'handlegothic';
-    color: #d3e0ea;
-}
-
-#fontStyle-2 {
-    font-family: 'infiniteStroke';
-    color: #1687a7;
+.header-font-style {
+    padding-left: 3vmin;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3vmin;
 }
