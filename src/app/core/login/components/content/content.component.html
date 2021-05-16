@@ -8,23 +8,23 @@
             
         </div>
         <div class="card-body">
-            <form id="loginForm" method="POST">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div class="text-center form-group row" >
                     <div class="input-group mb-3">
                         <span class="input-group-text text-dark" id="addon-icon-user"> <i class="fa fa-user"></i> </span>
-                        <input type="text" class="form-control" placeholder="Usuário" name="user" aria-label="Username" aria-describedby="addon-icon-user">
+                        <input type="text" class="form-control" placeholder="Usuário" formControlName="user" aria-label="Username" aria-describedby="addon-icon-user">
                     </div>   
                 </div>
                 <div class="text-center form-group row" >
                     <div class="input-group mb-3">
                         <span class="input-group-text text-dark" id="addon-icon-pwd"> <i class="fa fa-lock"></i> </span>
-                        <input type="password" class="form-control" placeholder="Senha" name="user" name="password" aria-label="Username" aria-describedby="addon-icon-pwd">
+                        <input type="password" class="form-control" placeholder="Senha" name="user" formControlName="password" aria-label="Username" aria-describedby="addon-icon-pwd">
                     </div>
                 </div>
                 
                 <div class="text-center py-1">
                     <div class="d-grid gap-2 col-12 mx-auto">
-                        <button class="btn btn-outline-dark btn-block"  routerLink="/home" type="submit"> 
+                        <button type="submit" class="btn btn-outline-dark btn-block"  routerLink="/home" type="submit"> 
                             <span style="font-size: 16px; font-family: 'Courier New', Courier, monospace;">
                                 Entrar
                             </span>    
