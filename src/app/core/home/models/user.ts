@@ -1,4 +1,4 @@
-export interface User {
+export interface Client {
     name: string; 
     cpf: string;
     birthDate: string; 

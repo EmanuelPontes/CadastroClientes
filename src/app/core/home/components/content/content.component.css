@@ -1,15 +1,11 @@
 
-.card {
-  margin-top: 40px;
-  border: 1px dashed #006cf0af;
-  border-radius: 5%;
-}
 
 .card-header {
   background-color: #7a7a7a!important;
 }
-.card .card-body {
-  min-height: 185vh;
+.card-body {
+  max-width: 90vmin;
+  min-height: 60vh;
   width: 100%!important;
   border: 0!important;
 }

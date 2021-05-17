@@ -1,7 +1,7 @@
 
 a {
-    text-decoration: none;
-    outline: none;
+    text-decoration: none!important;
+    outline: none!important;
     color: #fff;
 }
 
@@ -9,4 +9,27 @@ a {
     padding-left: 3vmin;
     font-family: 'Courier New', Courier, monospace;
     font-size: 3vmin;
+}
+
+.logout-font {
+    font-family: 'Courier New', Courier, monospace;
+}
+.btn-logout {
+    position: relative!important;
+    right: 0!important;
+    left: 155vmin!important;
+}
+
+@media (max-width: 600px) {
+    .header-font-style {
+        padding-left: 3vmin;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 6vmin;
+    }
+
+    .btn-logout {
+        position: relative!important;
+        right: 1vmin!important;
+        left: 1vmin!important;
+    }
 }

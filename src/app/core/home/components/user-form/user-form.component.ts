@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { User } from '../../models/user';
+import { Client } from '../../models/user';
+import { formatDate } from '@angular/common';
+import { phoneValidator } from './phoneValidator';
+
 
 @Component({
   selector: 'app-user-form',
@@ -11,17 +14,20 @@ import { User } from '../../models/user';
 export class UserFormComponent implements OnInit {
   form: any;
 
-  
-
   public iconClass = "fa fa-user-plus"; 
   public modalTitle = "Novo Cliente";
-  private client: User;
+  private client: Client = { name: "",
+                          cpf: "",
+                          birthDate: "",
+                          phones: []
+                        };
+  private startDate = new Date(Date.now());
   
   constructor(public activeModal: NgbActiveModal,
               private formBuilder: FormBuilder,
               
               ) { 
-                this.CreateUserForm();
+                this.createUserForm();
   }
 
   ngOnInit(): void {
@@ -41,37 +47,66 @@ export class UserFormComponent implements OnInit {
     return this.form.get('birthDate');
   }
 
-  public setData(modalTitle: string, iconClass: string, client: User) {
+  get phones() {
+    return this.form.get('phones') as FormArray;
+  }
+
+  public setData(modalTitle: string, iconClass: string, client: Client) {
     this.iconClass = iconClass;
     this.modalTitle = modalTitle;
     if ((client !== undefined) && (client !== null)) {
+      console.log(client);
       this.name.setValue(client.name);
       this.cpf.setValue(client.cpf);
       let date = client.birthDate.split('/');
-      
-      this.birthDate.setValue(new Date(parseInt(date[2]), parseInt(date[1]) - 1, parseInt(date[0])));
+      let newDate = new Date(parseInt(date[2]), parseInt(date[1]) - 1, parseInt(date[0]))
+      this.birthDate.setValue(formatDate(newDate, 'yyyy-MM-dd', 'en'));
+      client.phones.forEach(phone => {
+        this.phones.push(this.createNewPhone(phone));
+      })
+    } else {
+      this.phones.push(this.createNewPhone(''));
     }
     
   }
 
-  public onSubmit() {
+  public onSave() {
     this.client.name = this.name.value;
     this.client.cpf = this.cpf.value;
     this.client.birthDate = this.birthDate.value;
+    this.phones.controls.forEach(phone => {
+      const phoneForm = phone as FormGroup;
+      this.client.phones.push(phoneForm.value);
+      console.log(this.client.phones);
+    });
 
     this.activeModal.close(this.client);
   }
 
-  closeModal() {
-    this.activeModal.dismiss('Modal Closed');
+  public deletePhone(index: number) {
+    this.phones.removeAt(index);
+  }
+  public addPhone() {
+    this.phones.push(this.createNewPhone(''));
   }
 
-  private CreateUserForm() {
+  closeModal() {
+    this.activeModal.close('closed');
+  }
+
+  private createUserForm() {
     this.form = this.formBuilder.group({
-      name: [],
-      cpf: [],
-      birthDate: [new Date()]
+      name: [,Validators.required],
+      cpf: [,Validators.required],
+      birthDate: [formatDate(this.startDate, 'yyyy-MM-dd', 'en'), Validators.required],
+      phones: this.formBuilder.array([], phoneValidator())
     });
+  }
+
+  private createNewPhone(phoneNumber: string): FormGroup {
+    return this.formBuilder.group({
+      phone: phoneNumber
+    })
   }
 
 }
