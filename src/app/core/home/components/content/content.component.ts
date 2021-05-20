@@ -74,7 +74,6 @@ export class ContentComponent implements OnInit {
   }
 
   public getCurrentClientsPage(): Array<Client> {
-    console.log(this.pagedList.length)
     return this.pagedList;
   }
 
@@ -86,7 +85,6 @@ export class ContentComponent implements OnInit {
   }
 
   private saveClient(client: Client) {
-    console.log(client)
     this.clientsService.postClient(client).subscribe(() => {
         this.getClientList();
     }, (err) => {
@@ -107,7 +105,6 @@ export class ContentComponent implements OnInit {
         
       this.clientList = data;
       this.setCurrentPageList(1);
-      console.log(data)
       
 
     },

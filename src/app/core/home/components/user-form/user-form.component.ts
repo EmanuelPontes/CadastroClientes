@@ -4,6 +4,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Client } from '../../models/user';
 import { formatDate } from '@angular/common';
 import { phoneValidator } from './phoneValidator';
+import { isValidCpf } from './cpfValidator';
 
 
 @Component({
@@ -59,8 +60,6 @@ export class UserFormComponent implements OnInit {
 
       this.client = client;
 
-      console.log("client id");
-      console.log(this.client.id);
       this.name.setValue(client.name);
       this.cpf.setValue(client.cpf);
       let date = client.birthDate.split('/');
@@ -82,7 +81,6 @@ export class UserFormComponent implements OnInit {
     this.phones.controls.forEach(phone => {
       const phoneForm = phone as FormGroup;
       this.client.phones.push(phoneForm.get('phone').value);
-      console.log(this.client.phones);
     });
 
     this.activeModal.close(this.client);
@@ -102,7 +100,7 @@ export class UserFormComponent implements OnInit {
   private createUserForm() {
     this.form = this.formBuilder.group({
       name: [,Validators.required],
-      cpf: [,Validators.required],
+      cpf: [,[Validators.required, isValidCpf()]],
       birthDate: [formatDate(this.startDate, 'yyyy-MM-dd', 'en'), Validators.required],
       phones: this.formBuilder.array([], phoneValidator())
     });

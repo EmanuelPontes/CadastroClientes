@@ -9,19 +9,15 @@ export function phoneValidator() : ValidatorFn  {
 
         for(let idx = 0; idx < controls.length; idx++) {
 
-            console.log(controls);
             let currentFormGroup = controls[idx];
             let nextFormGroup = controls[idx + 1];
-            console.log(currentFormGroup.value);
             
             if (nextFormGroup === undefined) {
                 return null;
             }
 
-            console.log(nextFormGroup.value);
 
             if (currentFormGroup.get('phone').value === nextFormGroup.get('phone').value) {
-                console.log('Phone Already Exists');
                 return {error:'Phone Already Exists'};
             }
 
