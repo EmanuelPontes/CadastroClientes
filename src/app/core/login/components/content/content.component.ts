@@ -34,8 +34,8 @@ export class ContentComponent implements OnInit {
   public onSubmit() {
     this.error = false;
     this.authService.login(this.username.value, this.password.value).subscribe(
-      (authToken: string) => {
-        sessionStorage.setItem('authToken', authToken);
+      (data: any) => {
+        sessionStorage.setItem('authToken', data.authToken);
         this.router.navigate(['home']);
       }, 
       (err) => {

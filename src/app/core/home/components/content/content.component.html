@@ -44,7 +44,7 @@
                                     <td><span class="px-2">{{client.cpf}}</span> </td>
                                     <td><span class="px-2">{{client.birthDate}}</span> </td>
                                     <td>
-                                        <button class="btn btn-outline-dark border-0 text-font-default" (click)="openFormModal(true, clientIdx)">
+                                        <button class="btn btn-outline-dark border-0 text-font-default" (click)="openFormModal(true, client.id)">
                                             <i class="fas fa-user-edit"></i> Editar
                                         </button>
                                     </td>
@@ -60,7 +60,7 @@
         </div>
     
         <div class="card-footer bg-white border-0">
-            <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-end ">
                 <ngb-pagination
                     *ngIf="pagedList.length > 0"
                     [collectionSize]="clientList.length"
@@ -75,4 +75,5 @@
         </div>
     
     </div>
+
 </div>

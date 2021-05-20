@@ -17,43 +17,34 @@ export class ContentComponent implements OnInit {
   public filteredList: Array<Client> = [];
 
   public page = 1;
-  public pageSize = 1;
+  public pageSize = 5;
   public pagedList: Array<Client> = [];
 
-  clientList: Array<Client> = [];
-  client: Client = { name: "",
-                  cpf: "",
-                birthDate: "",
-              phones: []};
+  public clientList: Array<Client> = [];
+  client: Client = { id: 0,
+                    name: "",
+                    cpf: "",
+                    birthDate: "",
+                    phones: []};
 
   constructor(private modalService: NgbModal,
               private clientsService: ClientsService) { 
-                let client1: Client ={ name: "Ivan",
-                              cpf: "11144477735",
-                            birthDate: "26/06/1999",
-                          phones: ["41992410365", "41991681947"]
-                };
-
-                let client2: Client ={ name: "Emanuel",
-                              cpf: "11144400035",
-                            birthDate: "26/06/1998",
-                          phones: ["41992410365", "41991681947"]
-                };
-                this.clientList.push(client1);
-                this.clientList.push(client2);
-                this.setCurrentPageList(1);
+                
   }
 
   ngOnInit(): void {
-    
+    this.getClientList();
   }
 
-  public openFormModal(isEditing: boolean, clientIdx: number) {
+  public openFormModal(isEditing: boolean, clientId: number) {
     const modalRef = this.modalService.open(UserFormComponent);
 
     if (isEditing) {
-      let clientEdit = this.clientList[(this.page - 1) + clientIdx];
-      modalRef.componentInstance.setData( "Editar informações do cliente", "fa fa-user-edit", clientEdit);
+      let clientEdit = this.clientList.find(client => client.id === clientId);
+      if (clientEdit !== undefined) {
+          modalRef.componentInstance.setData( "Editar informações do cliente", "fa fa-user-edit", clientEdit);
+      }
+      
 
     } else {
       modalRef.componentInstance.setData( "Adicionar novo Cliente", "fa fa-user-plus", null);
@@ -62,7 +53,7 @@ export class ContentComponent implements OnInit {
     modalRef.result.then((result) => {
       if ((result !== 'closed') && (result['name'] || result['cpf']))  {
         const cpfInvalid = this.clientList.find((clientObj) => clientObj.cpf === result.cpf);
-        if (cpfInvalid === undefined) {
+        if ((cpfInvalid === undefined) || isEditing) {
           Object.assign(this.client, result);
           isEditing ? this.updateClient(this.client) : this.saveClient(this.client);
         } else {
@@ -83,6 +74,7 @@ export class ContentComponent implements OnInit {
   }
 
   public getCurrentClientsPage(): Array<Client> {
+    console.log(this.pagedList.length)
     return this.pagedList;
   }
 
@@ -94,6 +86,7 @@ export class ContentComponent implements OnInit {
   }
 
   private saveClient(client: Client) {
+    console.log(client)
     this.clientsService.postClient(client).subscribe(() => {
         this.getClientList();
     }, (err) => {
@@ -111,7 +104,12 @@ export class ContentComponent implements OnInit {
 
   private getClientList() {
     this.clientsService.getClientList().subscribe((data: Array<Client>) => {
+        
       this.clientList = data;
+      this.setCurrentPageList(1);
+      console.log(data)
+      
+
     },
     (error) => {
       console.log(error);

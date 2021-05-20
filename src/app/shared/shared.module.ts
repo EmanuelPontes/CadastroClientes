@@ -1,11 +1,13 @@
-import { NgModule } from "@angular/core";
-import { MainPageTemplateModule } from "./main-page-template/main-page-template.module";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ModalConfirm } from './Modal/modal-confirm.component';
+
+
 
 @NgModule({
-    imports:[
-        MainPageTemplateModule
-    ]
+  declarations: [ModalConfirm],
+  imports: [
+    CommonModule
+  ]
 })
-export class SharedModule {
-
-}
+export class SharedModule { }

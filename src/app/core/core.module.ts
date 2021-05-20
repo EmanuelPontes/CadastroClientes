@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
+import { SharedModule } from '../shared/shared.module';
+import { ModalConfirm } from '../shared/Modal/modal-confirm.component';
 
 
 
@@ -19,11 +21,12 @@ import { NgxMaskModule } from 'ngx-mask';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
     NgxMaskModule.forRoot(),
   ],
   exports: [
     HomeModule, 
     LoginModule
-  ]
+  ],
 })
 export class CoreModule { }

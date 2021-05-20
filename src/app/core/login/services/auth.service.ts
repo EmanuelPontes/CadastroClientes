@@ -14,7 +14,7 @@ export class AuthService {
 
     public login(username: string, password: string) {
         
-        return this.http.post<any>(`${this.API_URL}/logme`,{ user: username, pwd: password });
+        return this.http.post<any>(`${this.API_URL}/admin`,{ username: username, password: password });
 
     }
 }

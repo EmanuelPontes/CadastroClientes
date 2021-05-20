@@ -16,7 +16,8 @@ export class UserFormComponent implements OnInit {
 
   public iconClass = "fa fa-user-plus"; 
   public modalTitle = "Novo Cliente";
-  private client: Client = { name: "",
+  private client: Client = { id: 0,
+                          name: "",
                           cpf: "",
                           birthDate: "",
                           phones: []
@@ -55,7 +56,11 @@ export class UserFormComponent implements OnInit {
     this.iconClass = iconClass;
     this.modalTitle = modalTitle;
     if ((client !== undefined) && (client !== null)) {
-      console.log(client);
+
+      this.client = client;
+
+      console.log("client id");
+      console.log(this.client.id);
       this.name.setValue(client.name);
       this.cpf.setValue(client.cpf);
       let date = client.birthDate.split('/');
@@ -76,7 +81,7 @@ export class UserFormComponent implements OnInit {
     this.client.birthDate = this.birthDate.value;
     this.phones.controls.forEach(phone => {
       const phoneForm = phone as FormGroup;
-      this.client.phones.push(phoneForm.value);
+      this.client.phones.push(phoneForm.get('phone').value);
       console.log(this.client.phones);
     });
 
@@ -105,7 +110,7 @@ export class UserFormComponent implements OnInit {
 
   private createNewPhone(phoneNumber: string): FormGroup {
     return this.formBuilder.group({
-      phone: phoneNumber
+      phone: [phoneNumber]
     })
   }
 

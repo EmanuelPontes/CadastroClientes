@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { ClientsService } from './services/clients.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from 'src/app/shared/shared.module';
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null
 
 @NgModule({
@@ -27,6 +28,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
     NgxMaskModule.forRoot(),
   ],
   providers: [
