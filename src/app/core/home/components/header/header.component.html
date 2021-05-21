@@ -1,16 +1,18 @@
 <div class="navbar navbar-expand-lg navbar-dark fixed-top bg-white shadow-sm">
-    <a class="navbar-brand " routerLink="/home">
-        <span class="header-font-style ">
-            <i class="fas fa-portrait fa-1x text-secondary"></i> <span class="text-secondary">
+    <div class="container-fluid">
+        <a class="navbar-brand " routerLink="/home">
+            <h4 class="text-font-default  text-secondary py-1">
+                <i class="fas fa-portrait fa-1x "></i> 
                 Cadastro Fácil
-            </span> 
-        </span>
-    </a>
-    <div class="btn-logout">
-        <a class="btn btn-outline-light border-0 text-secondary" (click)="logout()">  
-            <i class="fa fa-door-open"></i>
-            <span class="logout-font">Sair</span> 
+            </h4>
         </a>
+        <div class="me-2">
+            <a class="btn btn-outline-light border-0 text-secondary" (click)="logout()">  
+                <i class="fa fa-door-open"></i>
+                <span class="text-font-default">Sair</span> 
+            </a>
+        </div>
     </div>
+    
     
 </div>
